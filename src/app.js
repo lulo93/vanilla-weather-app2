@@ -86,4 +86,51 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
+function currentWeather(response) {
+  console.log(response.data);
+  let precipitation = document.querySelector(`#precipitation`);
+  precipitation.innerHTML = response.data.weather[0].description;
+  let humidity = document.querySelector(`#humidity`);
+  humidity.innerHTML = `${response.data.main.humidity}%`;
+  let windSpeed = document.querySelector(`#wind`);
+  windSpeed.innerHTML = `${response.data.wind.speed} mph`;
+}
+
+function updateCurrentTemp(response) {
+  let currentLocation = response.data.name;
+  let locationTemp = Math.round(response.data.main.temp);
+
+  let enterLocation = document.querySelector("#city");
+  enterLocation.innerHTML = `${currentLocation}`;
+  let enterTemp = document.querySelector("#temperature");
+  enterTemp.innerHTML = `${locationTemp}`;
+  currentWeather(response);
+}
+
+function locationSearch(newLocation) {
+  let apiKey = "24be2a5d0560b29769b34e4136c9cb1f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(updateCurrentTemp);
+}
+
+let currentLocationButton = document.querySelector("#location-button");
+
+function locateLocationTemp(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+
+  let apiKey = "57b463acac326f9d3b29b49c1092e284";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(updateCurrentTemp);
+}
+
+function locateCity(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(locateLocationTemp);
+}
+
+currentLocationButton.addEventListener("click", locateCity);
+
 search("London");
