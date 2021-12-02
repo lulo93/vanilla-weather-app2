@@ -28,6 +28,7 @@ function displayTemperature(response) {
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
+  let feelsLikeElement = document.querySelector("#feels-like");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
@@ -38,6 +39,7 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
@@ -88,12 +90,12 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 function currentWeather(response) {
   console.log(response.data);
-  let precipitation = document.querySelector(`#precipitation`);
-  precipitation.innerHTML = response.data.weather[0].precipitation;
+  let feelsLikeElement = document.querySelector("#feels-like");
+  feelsLikeElement.innerHTML = `${Math.round(response.data.main.feels_like)}`;
   let humidity = document.querySelector(`#humidity`);
-  humidity.innerHTML = `${response.data.main.humidity}%`;
+  humidity.innerHTML = `${response.data.main.humidity}`;
   let windSpeed = document.querySelector(`#wind`);
-  windSpeed.innerHTML = `${response.data.wind.speed} mph`;
+  windSpeed.innerHTML = Math.round(`${response.data.wind.speed}`);
 }
 
 function updateCurrentTemp(response) {
@@ -105,12 +107,6 @@ function updateCurrentTemp(response) {
   let enterTemp = document.querySelector("#temperature");
   enterTemp.innerHTML = `${locationTemp}`;
   currentWeather(response);
-}
-
-function locationSearch(newLocation) {
-  let apiKey = "24be2a5d0560b29769b34e4136c9cb1f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${newLocation}&appid=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(updateCurrentTemp);
 }
 
