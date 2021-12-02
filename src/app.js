@@ -89,7 +89,7 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 function currentWeather(response) {
   console.log(response.data);
   let precipitation = document.querySelector(`#precipitation`);
-  precipitation.innerHTML = response.data.weather[0].description;
+  precipitation.innerHTML = response.data.weather[0].precipitation;
   let humidity = document.querySelector(`#humidity`);
   humidity.innerHTML = `${response.data.main.humidity}%`;
   let windSpeed = document.querySelector(`#wind`);
