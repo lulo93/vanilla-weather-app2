@@ -2,7 +2,7 @@ function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
-    hours = `0${minutes}`;
+    hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
@@ -89,7 +89,6 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 function currentWeather(response) {
-  console.log(response.data);
   let feelsLikeElement = document.querySelector("#feels-like");
   feelsLikeElement.innerHTML = `${Math.round(response.data.main.feels_like)}`;
   let humidity = document.querySelector(`#humidity`);
@@ -107,6 +106,7 @@ function updateCurrentTemp(response) {
   let enterTemp = document.querySelector("#temperature");
   enterTemp.innerHTML = `${locationTemp}`;
   currentWeather(response);
+
   axios.get(apiUrl).then(updateCurrentTemp);
 }
 
