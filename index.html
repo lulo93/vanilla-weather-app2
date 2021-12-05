@@ -12,6 +12,12 @@
       crossorigin="anonymous"
     />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
@@ -30,7 +36,12 @@
                 />
               </div>
               <div class="col-sm-2">
-                <input type="submit" value="Search" class="btn btn-primary" />
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-primary"
+                  id="search-button"
+                />
               </div>
               <div class="col-sm-2">
                 <input
@@ -56,17 +67,14 @@
                 <div class="float-left">
                   <strong id="temperature"></strong
                   ><span class="units"
-                    ><a href="#" id="celsius-link" class="active">°C</a> |<a
-                      href="#"
-                      id="fahrenheit-link"
-                    >
-                      °F</a
-                    ></span
+                    ><a href="#" id="celsius-link" class="active">°C</a>
+                    |
+                    <a href="#" id="fahrenheit-link"> °F</a></span
                   >
                 </div>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" id="additional-info">
               <ul>
                 <li>Feels like: <span id="feels-like"></span>°C</li>
                 <li>Humidity: <span id="humidity"></span>%</li>
@@ -75,15 +83,17 @@
             </div>
           </div>
         </div>
-        <small>
-          <a
-            href="https://github.com/lulo93/vanilla-weather-app2"
-            target="_blank"
-          >
-            Open-source code</a
-          >
-          by Luisa Rua Estrada
-        </small>
+        <span class="credit"
+          ><small>
+            <a
+              href="https://github.com/lulo93/vanilla-weather-app2"
+              target="_blank"
+            >
+              Open-source code</a
+            >
+            by Luisa Rua Estrada
+          </small></span
+        >
       </div>
     </div>
     <script src="src/app.js"></script>
