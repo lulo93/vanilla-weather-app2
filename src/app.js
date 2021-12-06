@@ -47,6 +47,7 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+
 function search(city) {
   let apiKey = "24be2a5d0560b29769b34e4136c9cb1f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -97,16 +98,26 @@ function currentWeather(response) {
   windSpeed.innerHTML = Math.round(`${response.data.wind.speed}`);
 }
 
-function updateCurrentTemp(response) {
+function updateCurrentTemp(response, position) {
   let currentLocation = response.data.name;
   let locationTemp = Math.round(response.data.main.temp);
-
   let enterLocation = document.querySelector("#city");
   enterLocation.innerHTML = `${currentLocation}`;
+  let descriptionElement = document.querySelector("#description");
   let enterTemp = document.querySelector("#temperature");
+  let iconElement = document.querySelector("#icon");
+  descriptionElement.innerHTML = response.data.weather[0].description;
   enterTemp.innerHTML = `${locationTemp}`;
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   currentWeather(response);
-
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "57b463acac326f9d3b29b49c1092e284";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(updateCurrentTemp);
 }
 
@@ -115,10 +126,8 @@ let currentLocationButton = document.querySelector("#location-button");
 function locateLocationTemp(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-
   let apiKey = "57b463acac326f9d3b29b49c1092e284";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(updateCurrentTemp);
 }
 
