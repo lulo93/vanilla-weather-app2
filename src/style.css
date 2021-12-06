@@ -4,10 +4,10 @@ body {
 }
 
 h1 {
-  color: #5d9fff;
+  color: #ffffff;
   font-weight: 500;
   font-size: 50px;
-  text-shadow: 2px 2px 2px white, 2px 2px 2px white;
+  text-shadow: 2px 2px 2px #1c71f1, 2px 2px 2px #1c71f1;
   line-height: 28px;
 }
 
@@ -42,7 +42,13 @@ a {
 
 #location-button {
   font-family: "Blinker", sans-serif;
-  background: linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%);
+  background: radial-gradient(
+    circle at 48.7% 44.3%,
+    rgb(30, 144, 231) 0%,
+    rgb(56, 113, 209) 22.9%,
+    rgb(38, 76, 140) 76.7%,
+    rgb(31, 63, 116) 100.2%
+  );
   color: #ffffff;
   border: none;
   transition: all 200ms ease;
@@ -52,7 +58,13 @@ a {
 
 #search-button {
   font-family: "Blinker", sans-serif;
-  background: linear-gradient(-225deg, #5d9fff 0%, #b8dcff 48%, #6bbbff 100%);
+  background: radial-gradient(
+    circle at 48.7% 44.3%,
+    rgb(30, 144, 231) 0%,
+    rgb(56, 113, 209) 22.9%,
+    rgb(38, 76, 140) 76.7%,
+    rgb(31, 63, 116) 100.2%
+  );
   color: #ffffff;
   border: none;
   transition: all 200ms ease;
@@ -80,7 +92,7 @@ a {
 }
 
 .weather-app {
-  border: 5px solid #5d9fff;
+  border: 5px solid #1c71f1;
   border-radius: 5px;
   border-style: ridge;
   padding: 20px;
@@ -106,8 +118,8 @@ a {
 }
 
 #temperature {
-  color: #5d9fff;
-  text-shadow: 2px 2px 2px white, 2px 2px 2px white;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px #1c71f1, 2px 2px 2px #1c71f1;
 }
 
 .units {
