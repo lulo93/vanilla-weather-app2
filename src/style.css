@@ -7,7 +7,7 @@ h1 {
   color: #5d9fff;
   font-weight: 500;
   font-size: 50px;
-  text-shadow: 3px 3px 3px white, 3px 3px 2px white;
+  text-shadow: 2px 2px 2px white, 2px 2px 2px white;
   line-height: 28px;
 }
 
@@ -21,7 +21,7 @@ li {
   font-size: 20px;
   margin: 0;
   padding: 0;
-  font-weight: 400;
+  font-weight: 370;
   line-height: 19px;
   text-transform: capitalize;
 }
@@ -103,6 +103,11 @@ a {
   font-size: 64px;
   font-weight: 400;
   line-height: 1;
+}
+
+#temperature {
+  color: #5d9fff;
+  text-shadow: 2px 2px 2px white, 2px 2px 2px white;
 }
 
 .units {
