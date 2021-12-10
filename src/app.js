@@ -149,7 +149,7 @@ function displayForecast() {
       `              <div class="col-2">
                 <div class="weather-forecast-date">${day}</div>
                 <img
-                  src="http://openweathermap.org/img/wn/50d@2x.png"
+                  src="https://openweathermap.org/img/wn/50d@2x.png"
                   alt=""
                   width="60px"
                 />
