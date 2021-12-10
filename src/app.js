@@ -114,13 +114,7 @@ function updateCurrentTemp(response, position) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   currentWeather(response);
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = "57b463acac326f9d3b29b49c1092e284";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(updateCurrentTemp);
 }
-
 let currentLocationButton = document.querySelector("#location-button");
 
 function locateLocationTemp(position) {
