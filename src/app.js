@@ -169,6 +169,8 @@ function updateCurrentTemp(response, position) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   currentWeather(response);
+
+  getForecast(response.data.coord);
 }
 let currentLocationButton = document.querySelector("#location-button");
 
